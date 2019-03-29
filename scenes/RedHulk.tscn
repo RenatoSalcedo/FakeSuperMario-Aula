@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://scripts/redhulk.gb.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/Red Hulk/Hulk-01.png" type="Texture" id=2]
 [ext_resource path="res://assets/Red Hulk/Hulk-02.png" type="Texture" id=3]
 [ext_resource path="res://assets/Red Hulk/Hulk-03.png" type="Texture" id=4]
@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/Red Hulk/Hulk-15.png" type="Texture" id=15]
 [ext_resource path="res://assets/Red Hulk/Hulk-16.png" type="Texture" id=16]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "andar"
 length = 1.5
 loop = true
@@ -34,7 +34,47 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="Animation" id=3]
+resource_name = "morre"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.3 ), Vector2( 2, 0.6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 47 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 34.7986
 height = 73.8247
 
@@ -56,9 +96,10 @@ texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Follow/Enemy"]
 autoplay = "andar"
-anims/andar = SubResource( 2 )
+anims/andar = SubResource( 1 )
+anims/morre = SubResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Follow/Enemy"]
+[node name="Shape" type="CollisionShape2D" parent="Follow/Enemy"]
 rotation = 0.296706
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 

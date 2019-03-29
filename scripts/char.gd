@@ -3,12 +3,15 @@ extends KinematicBody2D
 onready var LeftRay = get_node("LR")
 onready var RightRay = get_node("RR")
 onready var Char = get_node("charImg")
+onready var reborn = get_node("Resurrect")
+
+var no_chao = true
 #----------------------------------------------------------------------------
 
 # This demo shows how to build a kinematic controller.
 
 # Member variables
-const GRAVITY = 600.0 # pixels/second/second
+const GRAVITY = 900.0 # pixels/second/second
 
 # Angle in degrees towards either side that the player can consider "floor"
 const FLOOR_ANGLE_TOLERANCE = 40
@@ -16,8 +19,8 @@ const WALK_FORCE = 600
 const WALK_MIN_SPEED = 20
 const WALK_MAX_SPEED = 300
 const STOP_FORCE = 1300
-const JUMP_SPEED = 700
-const JUMP_MAX_AIRBORNE_TIME = 0.4
+const JUMP_SPEED = 650
+const JUMP_MAX_AIRBORNE_TIME = 0.1
 
 const SLIDE_STOP_VELOCITY = 1.0 # one pixel/second
 const SLIDE_STOP_MIN_TRAVEL = 2.0 # one pixel
@@ -26,6 +29,8 @@ var velocity = Vector2()
 var on_air_time = 100
 var jumping = false
 var falling = false
+
+var live = true
 
 var prev_jump_pressed = false
 
@@ -83,19 +88,18 @@ func _physics_process(delta):
 	on_air_time += delta
 	prev_jump_pressed = jump
 	
-	var no_chao = LeftRay.is_colliding() or RightRay.is_colliding()
+	self.no_chao = LeftRay.is_colliding() or RightRay.is_colliding()
 	var walking = walk_right or walk_left	
-	
-	
+
 	if walking and no_chao and !jumping:
-		Char.play("default")
+		Char.play("Coelho")
 		falling = false
 	elif jumping:
-		Char.play("jump")
+		Char.play("CoelhoJumpFall")
 	elif !jumping and !no_chao and (walking or !walking) and falling:
-		Char.play("cair")
+		Char.play("CoelhoJumpFall")
 	else:
-		Char.play("default")
+		Char.play("CoelhoStop")
 		Char.stop()
 	
 	if  walk_right:
@@ -105,10 +109,29 @@ func _physics_process(delta):
 		Char.set_flip_h(true)
 
 func _on_pes_body_entered(body):
-	jump()
+	if !self.no_chao:
+		jump()
+		body.smash()
 
 func jump():
-	Char.play("jump")
+	Char.play("CoelhoJumpFall")
 	velocity.y = -JUMP_SPEED
 	jumping = true
 	falling = false
+
+
+func _on_corpo_body_entered(body):
+	if not live: return
+	morrer()
+
+func morrer():
+	Char.play("CoelhoDie")
+	Char.set_offset(Vector2(0, 15))
+	falling = false
+	jumping = false
+	live = false
+	set_physics_process(false)
+	reborn.start()
+
+func _on_Resurrect_timeout():
+	get_tree().reload_current_scene()
