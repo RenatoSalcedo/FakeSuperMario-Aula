@@ -65,13 +65,13 @@ _data = {
 [node name="main" type="Node"]
 
 [node name="char" type="KinematicBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 52.0479, 572.455 )
 z_index = 2
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="charImg" type="AnimatedSprite" parent="char"]
-position = Vector2( 28.2621, -6.9375 )
+position = Vector2( 28.2621, -6.93762 )
 frames = SubResource( 1 )
 frame = 2
 playing = true
@@ -85,12 +85,14 @@ shape = SubResource( 2 )
 position = Vector2( -7.32091, 51.469 )
 enabled = true
 cast_to = Vector2( 0, 7 )
+collision_mask = 2
 collide_with_areas = true
 
 [node name="RR" type="RayCast2D" parent="char"]
 position = Vector2( 37.5036, 51.1284 )
 enabled = true
 cast_to = Vector2( 0, 7 )
+collision_mask = 2
 collide_with_areas = true
 
 [node name="camera" type="Camera2D" parent="char"]
@@ -100,9 +102,18 @@ limit_bottom = 740
 limit_smoothed = true
 smoothing_enabled = true
 
+[node name="pes" type="Area2D" parent="char"]
+collision_layer = 1024
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="char/pes"]
+position = Vector2( 21.9059, 101.744 )
+shape = SubResource( 3 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 23 )
 cell_size = Vector2( 70, 70 )
+collision_layer = 2
 format = 1
 tile_data = PoolIntArray( 196607, 3, 0, 262143, 3, 0, 196619, 1, 0, 196620, 0, 0, 196621, 2, 0, 327679, 3, 0, 393215, 3, 0, 458751, 3, 0, 393222, 1, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 2, 0, 524287, 3, 0, 589823, 3, 0, 655359, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 2, 0, 589836, 5, 0, 589837, 5, 0, 589838, 5, 0, 589839, 5, 0, 589840, 1, 0, 589841, 0, 0, 589842, 0, 0, 589843, 2, 0, 720895, 3, 0, 655360, 3, 0, 655361, 3, 0, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 3, 0, 655367, 3, 0, 655368, 3, 0, 655369, 3, 0, 655370, 3, 0, 655371, 3, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 3, 0, 655377, 3, 0, 655378, 3, 0, 655379, 3, 0 )
 
@@ -193,3 +204,4 @@ curve = SubResource( 3 )
 position = Vector2( 369.098, 570.052 )
 curve = SubResource( 4 )
 
+[connection signal="body_entered" from="char/pes" to="char" method="_on_pes_body_entered"]

@@ -16,7 +16,7 @@ const WALK_FORCE = 600
 const WALK_MIN_SPEED = 20
 const WALK_MAX_SPEED = 300
 const STOP_FORCE = 1300
-const JUMP_SPEED = 1000
+const JUMP_SPEED = 700
 const JUMP_MAX_AIRBORNE_TIME = 0.4
 
 const SLIDE_STOP_VELOCITY = 1.0 # one pixel/second
@@ -78,10 +78,7 @@ func _physics_process(delta):
 	if on_air_time < JUMP_MAX_AIRBORNE_TIME and jump and not prev_jump_pressed and not jumping:
 		# Jump must also be allowed to happen if the character left the floor a little bit ago.
 		# Makes controls more snappy.
-		Char.play("jump")
-		velocity.y = -JUMP_SPEED
-		jumping = true
-		falling = false
+		jump()
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
@@ -93,7 +90,7 @@ func _physics_process(delta):
 	if walking and no_chao and !jumping:
 		Char.play("default")
 		falling = false
-	elif jumping and walking:
+	elif jumping:
 		Char.play("jump")
 	elif !jumping and !no_chao and (walking or !walking) and falling:
 		Char.play("cair")
@@ -106,3 +103,12 @@ func _physics_process(delta):
 	
 	if walk_left:
 		Char.set_flip_h(true)
+
+func _on_pes_body_entered(body):
+	jump()
+
+func jump():
+	Char.play("jump")
+	velocity.y = -JUMP_SPEED
+	jumping = true
+	falling = false
