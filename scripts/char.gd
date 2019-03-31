@@ -6,6 +6,11 @@ onready var Char = get_node("charImg")
 onready var reborn = get_node("Resurrect")
 
 var no_chao = true
+
+var dirLeft = false
+var dirRight = false
+var dirUp = false
+
 #----------------------------------------------------------------------------
 
 # This demo shows how to build a kinematic controller.
@@ -41,9 +46,9 @@ func _physics_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
-	var walk_left = Input.is_action_pressed("move_left")
-	var walk_right = Input.is_action_pressed("move_right")
-	var jump = Input.is_action_pressed("jump")
+	var walk_left = Input.is_action_pressed("move_left") or dirLeft
+	var walk_right = Input.is_action_pressed("move_right") or dirRight
+	var jump = Input.is_action_pressed("jump") or dirUp
 	
 	var stop = true
 	
@@ -135,3 +140,32 @@ func morrer():
 
 func _on_Resurrect_timeout():
 	get_tree().reload_current_scene()
+
+
+func _on_head_body_entered(body):
+	if body.has_method("destruir"):
+		body.destruir()
+
+
+func _on_Left_pressed():
+	dirLeft = true
+
+
+func _on_Right_pressed():
+	dirRight = true
+
+
+func _on_Up_pressed():
+	dirUp = true
+
+
+func _on_Left_released():
+	dirLeft = false
+
+
+func _on_Right_released():
+	dirRight = false
+
+
+func _on_Up_released():
+	dirUp = false
