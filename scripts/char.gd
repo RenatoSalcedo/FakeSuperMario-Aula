@@ -3,13 +3,14 @@ extends KinematicBody2D
 onready var LeftRay = get_node("LR")
 onready var RightRay = get_node("RR")
 onready var Char = get_node("charImg")
-onready var reborn = get_node("Resurrect")
 
 var no_chao = true
 
 var dirLeft = false
 var dirRight = false
 var dirUp = false
+
+signal morreu
 
 #----------------------------------------------------------------------------
 
@@ -112,6 +113,8 @@ func _physics_process(delta):
 	
 	if walk_left:
 		Char.set_flip_h(true)
+		
+	if position.y > 900: morrer()
 
 func _on_pes_body_entered(body):
 	if !self.no_chao:
@@ -136,10 +139,14 @@ func morrer():
 	jumping = false
 	live = false
 	set_physics_process(false)
-	reborn.start()
+	emit_signal("morreu")
 
-func _on_Resurrect_timeout():
-	get_tree().reload_current_scene()
+func reborn():
+	Char.play("Coelho")
+	Char.set_offset(Vector2(0, 0))
+	velocity = Vector2(0, 0)
+	live = true
+	set_physics_process(true)
 
 
 func _on_head_body_entered(body):
