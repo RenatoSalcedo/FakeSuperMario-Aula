@@ -10,6 +10,9 @@ var dirLeft = false
 var dirRight = false
 var dirUp = false
 
+var fim = false
+
+signal finish
 signal morreu
 
 #----------------------------------------------------------------------------
@@ -47,8 +50,8 @@ func _physics_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
-	var walk_left = Input.is_action_pressed("move_left") or dirLeft
-	var walk_right = Input.is_action_pressed("move_right") or dirRight
+	var walk_left = Input.is_action_pressed("move_left") or dirLeft 
+	var walk_right = Input.is_action_pressed("move_right") or dirRight or fim
 	var jump = Input.is_action_pressed("jump") or dirUp
 	
 	var stop = true
@@ -76,19 +79,22 @@ func _physics_process(delta):
 	velocity += force * delta	
 	# Integrate velocity into motion and move
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	self.no_chao = LeftRay.is_colliding() or RightRay.is_colliding()
 	
 	if is_on_floor():
 		on_air_time = 0
+		falling = false
+		jumping = false
 		
 	if jumping and velocity.y > 0:
-		# If falling, no longer jumping
 		Char.play("cair")
 		jumping = false
 		falling = true
 	
-	if on_air_time < JUMP_MAX_AIRBORNE_TIME and jump and not prev_jump_pressed and not jumping:
+	if (on_air_time < JUMP_MAX_AIRBORNE_TIME and jump and not prev_jump_pressed and not jumping and not falling):
 		# Jump must also be allowed to happen if the character left the floor a little bit ago.
 		# Makes controls more snappy.
+		print("pula")
 		jump()
 	
 	on_air_time += delta
@@ -123,7 +129,7 @@ func _on_pes_body_entered(body):
 
 func jump():
 	Char.play("CoelhoJumpFall")
-	velocity.y = -JUMP_SPEED
+	velocity.y += -JUMP_SPEED
 	jumping = true
 	falling = false
 
@@ -146,6 +152,7 @@ func reborn():
 	Char.set_offset(Vector2(0, 0))
 	velocity = Vector2(0, 0)
 	live = true
+	fim = false
 	set_physics_process(true)
 
 
@@ -176,3 +183,8 @@ func _on_Right_released():
 
 func _on_Up_released():
 	dirUp = false
+
+
+func _on_Final_body_entered(body):
+	fim = true
+	emit_signal("finish")
