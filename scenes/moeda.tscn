@@ -65,7 +65,6 @@ script = ExtResource( 1 )
 rotation = 5.71246
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 3
 playing = true
 
 [node name="animation" type="AnimationPlayer" parent="."]

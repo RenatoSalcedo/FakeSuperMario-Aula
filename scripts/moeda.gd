@@ -8,6 +8,7 @@ func _ready():
 
 
 func _on_moeda_body_entered(body):
+	body.moeda()
 	anim.play("coleta")
 	shp.queue_free()
 	yield(anim, "animation_finished")

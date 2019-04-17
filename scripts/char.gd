@@ -12,6 +12,7 @@ var dirUp = false
 
 var fim = false
 
+signal moeda
 signal finish
 signal morreu
 
@@ -50,9 +51,9 @@ func _physics_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
-	var walk_left = Input.is_action_pressed("move_left") or dirLeft 
+	var walk_left = (Input.is_action_pressed("move_left") or dirLeft ) and not fim
 	var walk_right = Input.is_action_pressed("move_right") or dirRight or fim
-	var jump = Input.is_action_pressed("jump") or dirUp
+	var jump = (Input.is_action_pressed("jump") or dirUp) and not fim
 	
 	var stop = true
 	
@@ -94,7 +95,6 @@ func _physics_process(delta):
 	if (on_air_time < JUMP_MAX_AIRBORNE_TIME and jump and not prev_jump_pressed and not jumping and not falling):
 		# Jump must also be allowed to happen if the character left the floor a little bit ago.
 		# Makes controls more snappy.
-		print("pula")
 		jump()
 	
 	on_air_time += delta
@@ -129,10 +129,9 @@ func _on_pes_body_entered(body):
 
 func jump():
 	Char.play("CoelhoJumpFall")
-	velocity.y += -JUMP_SPEED
+	velocity.y = -JUMP_SPEED
 	jumping = true
 	falling = false
-
 
 func _on_corpo_body_entered(body):
 	if not live: return
@@ -188,3 +187,10 @@ func _on_Up_released():
 func _on_Final_body_entered(body):
 	fim = true
 	emit_signal("finish")
+
+func moeda():
+	emit_signal("moeda")
+
+
+func _on_game_time_timeout():
+	morrer()

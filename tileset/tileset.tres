@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=8 format=2]
+[gd_resource type="TileSet" load_steps=11 format=2]
 
 [ext_resource path="res://assets/Tiles/grassMid.png" type="Texture" id=1]
 [ext_resource path="res://assets/Tiles/grassLeft.png" type="Texture" id=2]
@@ -6,9 +6,16 @@
 [ext_resource path="res://assets/Tiles/grassCenter.png" type="Texture" id=4]
 [ext_resource path="res://assets/Tiles/liquidWater.png" type="Texture" id=5]
 [ext_resource path="res://assets/Tiles/liquidWaterTop_mid.png" type="Texture" id=6]
+[ext_resource path="res://assets/Tiles/signRight.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.3038, 35.027 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( -35.3878, 35.4301, -35.5626, -34.4998, 25.1016, -34.4998, 28.2484, -34.1501, 31.3952, -33.4508, 33.4931, -31.8774, 34.7169, -28.5557, 34.7169, 28.6119, 33.8428, 31.5839, 32.2694, 33.6818, 29.1225, 35.4301 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( -35.1697, 35.1991, -35.1697, -35.2553, 25.1448, -35.2553, 29.9682, -34.9056, 32.9402, -33.507, 34.6885, -30.535, 35.0381, -27.7378, 35.0381, 29.4299, 33.8143, 32.227, 31.7164, 33.8005, 29.5155, 35.1991 )
 
 [resource]
 0/name = "grassMid"
@@ -26,7 +33,7 @@ extents = Vector2( 35.3038, 35.027 )
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 35, 35 )
 } ]
-0/z_index = 0
+0/z_index = 1
 1/name = "grassLeft"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
@@ -39,10 +46,10 @@ extents = Vector2( 35.3038, 35.027 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 35, 35 )
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( -1, 2.53518e-006, -2.53518e-006, -1, 34.6828, 35.3496 )
 } ]
-1/z_index = 0
+1/z_index = 1
 2/name = "grassRight"
 2/texture = ExtResource( 3 )
 2/tex_offset = Vector2( 0, 0 )
@@ -55,10 +62,10 @@ extents = Vector2( 35.3038, 35.027 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 35, 35 )
 } ]
-2/z_index = 0
+2/z_index = 1
 3/name = "grassCenter"
 3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
@@ -74,7 +81,7 @@ extents = Vector2( 35.3038, 35.027 )
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 35, 35 )
 } ]
-3/z_index = 0
+3/z_index = 1
 4/name = "waterCenter"
 4/texture = ExtResource( 5 )
 4/tex_offset = Vector2( 0, 0 )
@@ -95,4 +102,14 @@ extents = Vector2( 35.3038, 35.027 )
 5/navigation_offset = Vector2( 35, 35 )
 5/shapes = [  ]
 5/z_index = 0
+6/name = "exit"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 70, 70 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 35, 35 )
+6/navigation_offset = Vector2( 35, 35 )
+6/shapes = [  ]
+6/z_index = 0
 

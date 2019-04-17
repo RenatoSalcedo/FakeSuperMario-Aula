@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="FakeSuperMario-Aula"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/start.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+transition="*res://scenes/transition.tscn"
 
 [display]
 

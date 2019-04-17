@@ -8,7 +8,7 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
-	var nOffset = get_parent().unit_offset + delta*direcao*0.3
+	var nOffset = get_parent().unit_offset + delta*direcao*0.5
 	
 	if direcao == 1 and nOffset >= 0.99999:
 		direcao = -1
