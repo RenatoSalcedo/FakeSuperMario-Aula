@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/platform.gd" type="Script" id=1]
+[ext_resource path="res://assets/Tiles/grassMid.png" type="Texture" id=2]
+[ext_resource path="res://assets/Tiles/grassCliffLeft.png" type="Texture" id=3]
+[ext_resource path="res://assets/Tiles/grassCliffRight.png" type="Texture" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 141.384, -365.39 )
+}
+
+[node name="movePlat" type="Path2D"]
+curve = SubResource( 1 )
+
+[node name="follow" type="PathFollow2D" parent="."]
+rotate = false
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="follow"]
+collision_layer = 2
+collision/safe_margin = 0.01
+motion/sync_to_physics = true
+script = ExtResource( 1 )
+
+[node name="form0" type="Sprite" parent="follow/KinematicBody2D"]
+texture = ExtResource( 2 )
+
+[node name="form1" type="Sprite" parent="follow/KinematicBody2D"]
+position = Vector2( -70, 0 )
+texture = ExtResource( 3 )
+
+[node name="form2" type="Sprite" parent="follow/KinematicBody2D"]
+position = Vector2( 70, 0 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="follow/KinematicBody2D"]
+build_mode = 1
+polygon = PoolVector2Array( -99.5578, -35.091, 100.241, -34.9249, 102.068, -33.5962, 104.061, -31.4372, 105.223, -28.9459, 105.223, -8.35157, 104.393, -4.36557, 102.732, 0.284771, 100.241, 5.59944, 96.0885, 11.2463, 91.4382, 15.7305, 83.6323, 22.2078, 73.5012, 26.5259, 63.8683, 30.1798, 53.7372, 32.671, 42.6096, 34.498, 39.1219, 34.9962, -41.4286, 34.9962, -53.2205, 33.1693, -64.182, 30.512, -76.9704, 25.3634, -88.9284, 18.3879, -95.0735, 12.5749, -100.554, 4.9351, -104.208, -4.69773, -105.039, -6.19248, -105.039, -27.119, -104.374, -31.2711, -102.215, -33.2641 )
+
