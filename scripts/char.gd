@@ -10,6 +10,9 @@ var dirLeft = false
 var dirRight = false
 var dirUp = false
 
+var fim = false
+
+signal finish
 signal morreu
 
 #----------------------------------------------------------------------------
@@ -48,7 +51,7 @@ func _physics_process(delta):
 	var force = Vector2(0, GRAVITY)
 	
 	var walk_left = Input.is_action_pressed("move_left") or dirLeft
-	var walk_right = Input.is_action_pressed("move_right") or dirRight
+	var walk_right = Input.is_action_pressed("move_right") or dirRight or fim
 	var jump = Input.is_action_pressed("jump") or dirUp
 	
 	var stop = true
@@ -97,7 +100,7 @@ func _physics_process(delta):
 	self.no_chao = LeftRay.is_colliding() or RightRay.is_colliding()
 	var walking = walk_right or walk_left	
 
-	if walking and no_chao and !jumping:
+	if (walking or fim) and no_chao and !jumping:
 		Char.play("Coelho")
 		falling = false
 	elif jumping:
@@ -146,6 +149,7 @@ func reborn():
 	Char.set_offset(Vector2(0, 0))
 	velocity = Vector2(0, 0)
 	live = true
+	fim = false
 	set_physics_process(true)
 
 
@@ -176,3 +180,8 @@ func _on_Right_released():
 
 func _on_Up_released():
 	dirUp = false
+
+
+func _on_Fim_body_entered(body):
+	fim = true
+	emit_signal("finish")

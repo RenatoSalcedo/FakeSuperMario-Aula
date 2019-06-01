@@ -18,19 +18,19 @@
 [ext_resource path="res://assets/Hulk/andando/frame_13_delay-0.15s.png" type="Texture" id=16]
 [ext_resource path="res://assets/Hulk/andando/frame_14_delay-0.12s.png" type="Texture" id=17]
 [ext_resource path="res://assets/Hulk/andando/frame_15_delay-0.15s.png" type="Texture" id=18]
-[ext_resource path="res://assets/Hulk/Jump2/frame_0_delay-0.11s.png" type="Texture" id=19]
-[ext_resource path="res://assets/Hulk/Jump2/frame_1_delay-0.11s.png" type="Texture" id=20]
-[ext_resource path="res://assets/Hulk/Jump2/frame_2_delay-0.11s.png" type="Texture" id=21]
-[ext_resource path="res://assets/Hulk/Jump2/frame_3_delay-0.11s.png" type="Texture" id=22]
-[ext_resource path="res://assets/Coelho/RoySpriteright7.png" type="Texture" id=23]
-[ext_resource path="res://assets/Hulk/Jump2/frame_4_delay-0.11s.png" type="Texture" id=24]
-[ext_resource path="res://assets/Coelho/RoySpriteright10.png" type="Texture" id=25]
-[ext_resource path="res://assets/Coelho/RoySpriteright11.png" type="Texture" id=26]
-[ext_resource path="res://assets/Coelho/RoySpriteright2.png" type="Texture" id=27]
-[ext_resource path="res://assets/Coelho/RoySpriteright3.png" type="Texture" id=28]
-[ext_resource path="res://assets/Coelho/RoySpriteright5.png" type="Texture" id=29]
-[ext_resource path="res://assets/Coelho/RoySpriteright4.png" type="Texture" id=30]
-[ext_resource path="res://assets/Coelho/RoySpriteright6.png" type="Texture" id=31]
+[ext_resource path="res://assets/Coelho/RoySpriteright7.png" type="Texture" id=19]
+[ext_resource path="res://assets/Coelho/RoySpriteright2.png" type="Texture" id=20]
+[ext_resource path="res://assets/Coelho/RoySpriteright10.png" type="Texture" id=21]
+[ext_resource path="res://assets/Coelho/RoySpriteright11.png" type="Texture" id=22]
+[ext_resource path="res://assets/Coelho/RoySpriteright3.png" type="Texture" id=23]
+[ext_resource path="res://assets/Coelho/RoySpriteright5.png" type="Texture" id=24]
+[ext_resource path="res://assets/Coelho/RoySpriteright4.png" type="Texture" id=25]
+[ext_resource path="res://assets/Coelho/RoySpriteright6.png" type="Texture" id=26]
+[ext_resource path="res://assets/Hulk/Jump2/frame_4_delay-0.11s.png" type="Texture" id=27]
+[ext_resource path="res://assets/Hulk/Jump2/frame_0_delay-0.11s.png" type="Texture" id=28]
+[ext_resource path="res://assets/Hulk/Jump2/frame_1_delay-0.11s.png" type="Texture" id=29]
+[ext_resource path="res://assets/Hulk/Jump2/frame_2_delay-0.11s.png" type="Texture" id=30]
+[ext_resource path="res://assets/Hulk/Jump2/frame_3_delay-0.11s.png" type="Texture" id=31]
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=32]
 [ext_resource path="res://assets/Tiles/cloud1.png" type="Texture" id=33]
 [ext_resource path="res://assets/Tiles/cloud2.png" type="Texture" id=34]
@@ -39,16 +39,16 @@
 [ext_resource path="res://scenes/GreyHulk.tscn" type="PackedScene" id=37]
 [ext_resource path="res://scenes/RedHulk.tscn" type="PackedScene" id=38]
 [ext_resource path="res://scenes/blocoDest.tscn" type="PackedScene" id=39]
-[ext_resource path="res://scripts/platform.gd" type="Script" id=40]
-[ext_resource path="res://assets/Tiles/grassMid.png" type="Texture" id=41]
-[ext_resource path="res://assets/Tiles/grassCliffLeft.png" type="Texture" id=42]
-[ext_resource path="res://assets/Tiles/grassCliffRight.png" type="Texture" id=43]
-[ext_resource path="res://assets/Botoes/esquerda0.png" type="Texture" id=44]
-[ext_resource path="res://assets/Botoes/esquerda1.png" type="Texture" id=45]
-[ext_resource path="res://assets/Botoes/direita0.png" type="Texture" id=46]
-[ext_resource path="res://assets/Botoes/direita1.png" type="Texture" id=47]
-[ext_resource path="res://assets/Botoes/cima0.png" type="Texture" id=48]
-[ext_resource path="res://assets/Botoes/cima1.png" type="Texture" id=49]
+[ext_resource path="res://scenes/movePlat.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/Botoes/esquerda0.png" type="Texture" id=41]
+[ext_resource path="res://assets/Botoes/esquerda1.png" type="Texture" id=42]
+[ext_resource path="res://assets/Botoes/direita0.png" type="Texture" id=43]
+[ext_resource path="res://assets/Botoes/direita1.png" type="Texture" id=44]
+[ext_resource path="res://assets/Botoes/cima0.png" type="Texture" id=45]
+[ext_resource path="res://assets/Botoes/cima1.png" type="Texture" id=46]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 23.3765, 204.368 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -57,35 +57,35 @@ animations = [ {
 "name": "default",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "CoelhoJumpFall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "cair",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": false,
-"name": "CoelhoDie",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 27 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "CoelhoStop",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "CoelhoDie",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "Coelho",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "cair",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -114,7 +114,17 @@ _data = {
 
 [sub_resource type="Curve2D" id=8]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 470, -330 )
+"points": PoolVector2Array( 0, 0, 0, 0, -9.99414, -1.79694, 0, 0, 0, 0, -9.99414, -521.797 )
+}
+
+[sub_resource type="Curve2D" id=9]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -0.348633, -4.88788, 0, 0, 0, 0, -120.349, -94.8879, 0, 0, 0, 0, 79.6514, -194.888, 0, 0, 0, 0, -114.03, -305.343, 0, 0, 0, 0, 79.6514, -384.888, 0, 0, 0, 0, -130.349, -504.888 )
+}
+
+[sub_resource type="Curve2D" id=10]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -16.353, -5.8028, 0, 0, 0, 0, -16.353, 494.197 )
 }
 
 [node name="main" type="Node"]
@@ -127,7 +137,15 @@ position = Vector2( 67.3027, 468.255 )
 wait_time = 2.0
 one_shot = true
 
+[node name="Fim" type="Area2D" parent="."]
+position = Vector2( 5809.8, 197.328 )
+collision_layer = 0
+
+[node name="areaFim" type="CollisionShape2D" parent="Fim"]
+shape = SubResource( 11 )
+
 [node name="char" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 26.2011, 462.236 )
 z_index = 2
 collision_mask = 2
@@ -194,7 +212,7 @@ tile_set = ExtResource( 32 )
 cell_size = Vector2( 70, 70 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 196607, 3, 0, 262143, 3, 0, 196619, 1, 0, 196620, 0, 0, 196621, 2, 0, 327679, 3, 0, 393215, 3, 0, 458751, 3, 0, 393222, 1, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 2, 0, 524287, 3, 0, 589823, 3, 0, 655359, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 2, 0, 589836, 5, 0, 589837, 5, 0, 589838, 5, 0, 589839, 5, 0, 589840, 1, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 2, 0, 720895, 3, 0, 655360, 3, 0, 655361, 3, 0, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 3, 0, 655367, 3, 0, 655368, 3, 0, 655369, 3, 0, 655370, 3, 0, 655371, 3, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 3, 0, 655377, 3, 0, 655378, 3, 0, 655379, 3, 0, 655380, 3, 0, 655381, 3, 0, 655382, 3, 0, 655383, 3, 0, 655384, 3, 0, 655385, 3, 0, 655386, 3, 0, 655387, 3, 0, 655388, 3, 0, 786431, 3, 0, 720896, 3, 0, 720897, 3, 0, 720898, 3, 0, 720899, 3, 0, 720900, 3, 0, 720901, 3, 0, 720902, 3, 0, 720903, 3, 0, 720904, 3, 0, 720905, 3, 0, 720906, 3, 0, 720907, 3, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 3, 0, 720913, 3, 0, 720914, 3, 0, 720915, 3, 0, 720916, 3, 0, 720917, 3, 0, 720918, 3, 0, 720919, 3, 0, 720920, 3, 0, 720921, 3, 0, 720922, 3, 0, 720923, 3, 0, 720924, 3, 0, 851967, 3, 0, 786432, 3, 0, 786433, 3, 0, 786434, 3, 0, 786435, 3, 0, 786436, 3, 0, 786437, 3, 0, 786438, 3, 0, 786439, 3, 0, 786440, 3, 0, 786441, 3, 0, 786442, 3, 0, 786443, 3, 0, 786444, 4, 0, 786445, 4, 0, 786446, 4, 0, 786447, 4, 0, 786448, 3, 0, 786449, 3, 0, 786450, 3, 0, 786451, 3, 0, 786452, 3, 0, 786453, 3, 0, 786454, 3, 0, 786455, 3, 0, 786456, 3, 0, 786457, 3, 0, 786458, 3, 0, 786459, 3, 0, 786460, 3, 0 )
+tile_data = PoolIntArray( 196607, 3, 0, 262143, 3, 0, 196619, 1, 0, 196620, 0, 0, 196621, 2, 0, 327679, 3, 0, 393215, 3, 0, 458751, 3, 0, 393222, 1, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 2, 0, 524287, 3, 0, 458829, 1, 0, 458830, 0, 0, 458831, 0, 0, 458832, 0, 0, 458833, 0, 0, 458834, 0, 0, 458835, 0, 0, 458836, 0, 0, 458837, 0, 0, 458838, 0, 0, 458839, 0, 0, 458840, 0, 0, 458841, 0, 0, 458842, 0, 0, 458843, 2, 0, 589823, 3, 0, 524365, 3, 0, 524366, 3, 0, 524367, 3, 0, 524368, 3, 0, 524369, 3, 0, 524370, 3, 0, 524371, 3, 0, 524372, 3, 0, 524373, 3, 0, 524374, 3, 0, 524375, 3, 0, 524376, 3, 0, 524377, 3, 0, 524378, 3, 0, 524379, 3, 0, 655359, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 2, 0, 589836, 5, 0, 589837, 5, 0, 589838, 5, 0, 589839, 5, 0, 589840, 1, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 2, 0, 589867, 1, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0, 589874, 0, 0, 589875, 0, 0, 589876, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 2, 0, 589901, 3, 0, 589902, 3, 0, 589903, 3, 0, 589904, 3, 0, 589905, 3, 0, 589906, 3, 0, 589907, 3, 0, 589908, 3, 0, 589909, 3, 0, 589910, 3, 0, 589911, 3, 0, 589912, 3, 0, 589913, 3, 0, 589914, 3, 0, 589915, 3, 0, 720895, 3, 0, 655360, 3, 0, 655361, 3, 0, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 3, 0, 655367, 3, 0, 655368, 3, 0, 655369, 3, 0, 655370, 3, 0, 655371, 3, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 3, 0, 655377, 3, 0, 655378, 3, 0, 655379, 3, 0, 655380, 3, 0, 655381, 3, 0, 655382, 3, 0, 655383, 3, 0, 655384, 3, 0, 655385, 3, 0, 655386, 3, 0, 655387, 3, 0, 655388, 3, 0, 655403, 3, 0, 655404, 3, 0, 655405, 3, 0, 655406, 3, 0, 655407, 3, 0, 655408, 3, 0, 655409, 3, 0, 655410, 3, 0, 655411, 3, 0, 655412, 3, 0, 655413, 3, 0, 655414, 3, 0, 655415, 3, 0, 655416, 3, 0, 655437, 3, 0, 655438, 3, 0, 655439, 3, 0, 655440, 3, 0, 655441, 3, 0, 655442, 3, 0, 655443, 3, 0, 655444, 3, 0, 655445, 3, 0, 655446, 3, 0, 655447, 3, 0, 655448, 3, 0, 655449, 3, 0, 655450, 3, 0, 655451, 3, 0, 786431, 3, 0, 720896, 3, 0, 720897, 3, 0, 720898, 3, 0, 720899, 3, 0, 720900, 3, 0, 720901, 3, 0, 720902, 3, 0, 720903, 3, 0, 720904, 3, 0, 720905, 3, 0, 720906, 3, 0, 720907, 3, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 3, 0, 720913, 3, 0, 720914, 3, 0, 720915, 3, 0, 720916, 3, 0, 720917, 3, 0, 720918, 3, 0, 720919, 3, 0, 720920, 3, 0, 720921, 3, 0, 720922, 3, 0, 720923, 3, 0, 720924, 3, 0, 720939, 3, 0, 720940, 3, 0, 720941, 3, 0, 720942, 3, 0, 720943, 3, 0, 720944, 3, 0, 720945, 3, 0, 720946, 3, 0, 720947, 3, 0, 720948, 3, 0, 720949, 3, 0, 720950, 3, 0, 720951, 3, 0, 720952, 3, 0, 851967, 3, 0, 786432, 3, 0, 786433, 3, 0, 786434, 3, 0, 786435, 3, 0, 786436, 3, 0, 786437, 3, 0, 786438, 3, 0, 786439, 3, 0, 786440, 3, 0, 786441, 3, 0, 786442, 3, 0, 786443, 3, 0, 786444, 4, 0, 786445, 4, 0, 786446, 4, 0, 786447, 4, 0, 786448, 3, 0, 786449, 3, 0, 786450, 3, 0, 786451, 3, 0, 786452, 3, 0, 786453, 3, 0, 786454, 3, 0, 786455, 3, 0, 786456, 3, 0, 786457, 3, 0, 786458, 3, 0, 786459, 3, 0, 786460, 3, 0, 786475, 3, 0, 786476, 3, 0, 786477, 3, 0, 786478, 3, 0, 786479, 3, 0, 786480, 3, 0, 786481, 3, 0, 786482, 3, 0, 786483, 3, 0, 786484, 3, 0, 786485, 3, 0, 786486, 3, 0, 786487, 3, 0, 786488, 3, 0 )
 
 [node name="CloudBack" type="ParallaxBackground" parent="."]
 editor/display_folded = true
@@ -306,29 +324,19 @@ position = Vector2( 1810.27, 467.392 )
 editor/display_folded = true
 position = Vector2( 2293.11, 471.799 )
 
-[node name="movePlat" type="Path2D" parent="movePlatform"]
+[node name="movePlat" parent="movePlatform" instance=ExtResource( 40 )]
+
+[node name="movePlat2" parent="movePlatform" instance=ExtResource( 40 )]
+position = Vector2( 2036.88, 169.998 )
 curve = SubResource( 8 )
 
-[node name="follow" type="PathFollow2D" parent="movePlatform/movePlat"]
-rotate = false
+[node name="movePlat3" parent="movePlatform" instance=ExtResource( 40 )]
+position = Vector2( 2797.24, 173.089 )
+curve = SubResource( 9 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="movePlatform/movePlat/follow"]
-collision_layer = 2
-script = ExtResource( 40 )
-
-[node name="form0" type="Sprite" parent="movePlatform/movePlat/follow/KinematicBody2D"]
-texture = ExtResource( 41 )
-
-[node name="form1" type="Sprite" parent="movePlatform/movePlat/follow/KinematicBody2D"]
-position = Vector2( -70, 0 )
-texture = ExtResource( 42 )
-
-[node name="form2" type="Sprite" parent="movePlatform/movePlat/follow/KinematicBody2D"]
-position = Vector2( 70, 0 )
-texture = ExtResource( 43 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="movePlatform/movePlat/follow/KinematicBody2D"]
-polygon = PoolVector2Array( -97.7355, -35.1703, 97.6391, -35.1703, 100.149, -33.7364, 102.658, -31.5854, 104.809, -28.0006, 104.809, -7.20842, 102.658, -0.397202, 98.3561, 7.48949, 92.6203, 15.7346, 84.0167, 21.8289, 69.6773, 28.2816, 50.319, 33.3004, 40.6399, 34.3759, -40.0193, 34.3759, -54.0003, 32.225, -67.9812, 28.9986, -81.6037, 22.9044, -90.2073, 16.8101, -98.4525, 8.20645, -103.83, -3.98206, -104.905, -8.64236, -104.905, -28.7176, -103.471, -32.6609, -101.32, -34.0948 )
+[node name="movePlat4" parent="movePlatform" instance=ExtResource( 40 )]
+position = Vector2( 2423.24, -305.996 )
+curve = SubResource( 10 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -339,22 +347,23 @@ layer = 2
 [node name="Left" type="TouchScreenButton" parent="CanvasLayer/controls"]
 position = Vector2( 3.77544, 610.245 )
 scale = Vector2( 3, 3 )
-normal = ExtResource( 44 )
-pressed = ExtResource( 45 )
+normal = ExtResource( 41 )
+pressed = ExtResource( 42 )
 
 [node name="Right" type="TouchScreenButton" parent="CanvasLayer/controls"]
 position = Vector2( 129.733, 610.255 )
 scale = Vector2( 3, 3 )
-normal = ExtResource( 46 )
-pressed = ExtResource( 47 )
+normal = ExtResource( 43 )
+pressed = ExtResource( 44 )
 
 [node name="Up" type="TouchScreenButton" parent="CanvasLayer/controls"]
 position = Vector2( 1170, 611.947 )
 scale = Vector2( 3, 3 )
-normal = ExtResource( 48 )
-pressed = ExtResource( 49 )
+normal = ExtResource( 45 )
+pressed = ExtResource( 46 )
 
 [connection signal="timeout" from="Spawn_Timer" to="." method="_on_Spawn_Timer_timeout"]
+[connection signal="body_entered" from="Fim" to="char" method="_on_Fim_body_entered"]
 [connection signal="morreu" from="char" to="." method="_on_char_morreu"]
 [connection signal="body_entered" from="char/pes" to="char" method="_on_pes_body_entered"]
 [connection signal="body_entered" from="char/corpo" to="char" method="_on_corpo_body_entered"]
